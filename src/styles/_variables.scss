@@ -1,0 +1,66 @@
+$colors: (
+
+    'white':                        #FFF,
+    'black':                        #000,
+
+    'primary':                      #3F0766,
+    'secondary':                    #8800FF,
+
+    'body-text':                    #000,
+    'body-background':              #fff,
+
+    'link':                         #000,
+    'link-hover':                   #02d8e9
+
+);
+
+
+$font: (
+
+    'family': (
+
+        'primary':                  'Roboto',
+        'secondary':                'Butler'
+
+    ),
+
+    'weight': (
+
+        'thin':                     100,
+        'extra-light':              200,
+        'light':                    300,
+        'regular':                  400,
+        'medium':                   500,
+        'bold':                     700,
+        'extra-bold':               800,
+        'black':                    900
+
+    )
+
+);
+
+
+$grid-columns:                      12;
+$grid-gutter-width:                 10px;
+
+$grid-breakpoints: (
+
+    xs:                             0,
+    sm:                             576px,
+    md:                             768px,
+    lg:                             992px,
+    xl:                             1200px,
+    xxl:                            1400px
+
+);
+
+$container-max-widths: (
+
+    sm:                             540px,
+    md:                             720px,
+    lg:                             960px,
+    xl:                             1140px,
+    xxl:                            1320px
+
+);
+

@@ -1,0 +1,67 @@
+@use 'sass:math';
+
+@mixin make-col($size: false){
+    @if $size {
+        flex: 0 0 auto;
+        width: percentage(math.div($size, $grid-columns));
+    }
+
+    @else {
+        flex: 1 1 0;
+        max-width: 100%;
+    }
+}
+
+@mixin make-col-auto(){
+    flex: 0 0 auto;
+    width: auto;
+}
+
+@mixin make-col-offset-left($size){
+    $num: percentage(math.div($size, $grid-columns));
+
+    margin-left: if($num == 0, 0, $num);
+}
+
+@mixin make-col-offset-right($size){
+    $num: percentage(math.div($size, $grid-columns));
+
+    margin-right: if($num == 0, 0, $num);
+}
+
+@mixin make-grid-columns(){
+    @each $breakpoint in map-keys($grid-breakpoints){
+        $infix: breakpoint-infix($breakpoint);
+
+        @include breakpoint($breakpoint){
+
+            .col#{$infix}{
+                flex: 1 0 0%;
+            }
+
+            .col#{$infix}-auto {
+                @include make-col-auto();
+            }
+
+            @if $grid-columns > 0 {
+                @for $i from 1 through $grid-columns {
+                    .col#{$infix}-#{$i}{
+                        @include make-col($i);
+                    }
+                }
+
+                @for $i from 0 through ($grid-columns - 1){
+                    @if not ($infix == "" and $i == 0){
+                        .offset-left#{$infix}-#{$i}{
+                            @include make-col-offset-left($i);
+                        }
+
+                        .offset-right#{$infix}-#{$i}{
+                            @include make-col-offset-right($i);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
